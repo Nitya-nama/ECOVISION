@@ -1,0 +1,563 @@
+/* =================================================================== */
+
+
+/* ROOT & THEME VARIABLES                         */
+#theme-toggle.spinning {
+    animation: spinIcon 0.4s ease-in-out;
+    box-shadow: 0 0 12px rgba(15, 178, 166, 0.4);
+}
+/* ===========================================================
+   🌗 THEME TOGGLE ANIMATION
+   =========================================================== */
+
+@keyframes spinIcon {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(360deg) scale(1.1);
+    }
+}
+
+#theme-toggle.spinning {
+    animation: spinIcon 0.4s ease-in-out;
+}
+
+
+/* =================================================================== */
+html, body {
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+:root {
+    --bg1: #042027;
+    --bg2: #021617;
+    --bg3: #07323a;
+    --bg: #042027;
+    --card: #07323a;
+    --muted: #9fc5b3;
+    --accent: #0fb2a6;
+    --accent-2: #0aa3d6;
+    --text: #d9f6f2;
+    --glass: rgba(255, 255, 255, 0.03);
+    --panel-border: rgba(255, 255, 255, 0.04);
+    --shadow: 0 4px 24px rgba(13, 130, 125, 0.1);
+    --focus-outline: 2px solid var(--accent-2);
+    --transition-fast: 0.2s ease-in-out;
+    --transition-med: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+:root.light {
+    --bg1: #f9fdfd;
+    --bg2: #d5f4ef;
+    --bg3: #e9fcf7;
+    --bg: #f4fafd;
+    --card: #e6fbf8;
+    --muted: #0b4d4a;
+    --accent: #007f7a;
+    --accent-2: #006b9a;
+    --text: #042d2b;
+    --glass: rgba(0, 0, 0, 0.02);
+    --panel-border: rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 24px rgba(0, 120, 115, 0.08);
+    --focus-outline: 2px solid var(--accent);
+}
+
+
+/* =================================================================== */
+
+
+/* ANIMATIONS & KEYFRAMES                      */
+
+
+/* =================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(15, 178, 166, 0.2), var(--shadow);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(15, 178, 166, 0.4), var(--shadow);
+    }
+}
+
+@keyframes backgroundGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =================================================================== */
+
+
+/* GENERAL RESET & FONT                          */
+
+
+/* =================================================================== */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg1));
+    background-size: 400% 400%;
+    animation: backgroundGradient 25s ease infinite;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    transition: background 0.4s, color 0.4s;
+}
+
+
+/* =================================================================== */
+
+
+/* MAIN APP & HEADER                             */
+
+
+/* =================================================================== */
+
+.app {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 24px 20px;
+    /* Initial load-in animation */
+    animation: fadeInUp 0.8s var(--transition-med) both;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 6px 20px rgba(10, 140, 130, 0.2);
+    transition: transform var(--transition-med);
+}
+
+.brand:hover .logo {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 2px;
+}
+
+
+/* =================================================================== */
+
+
+/* ENHANCED BUTTONS                              */
+
+
+/* =================================================================== */
+
+.btn {
+    background: var(--glass);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    transition: all var(--transition-med);
+    transform: scale(1);
+}
+
+.btn:hover,
+.btn:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 15px rgba(15, 178, 166, 0.15);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn:focus-visible {
+    outline: var(--focus-outline);
+    z-index: 2;
+}
+
+.btn.primary {
+    background: linear-gradient(95deg, var(--accent), var(--accent-2));
+    color: #fff;
+    border: none;
+    box-shadow: var(--shadow);
+}
+
+.btn.primary:hover,
+.btn.primary:focus-visible {
+    filter: brightness(1.1);
+    animation: pulseGlow 1.5s infinite;
+}
+
+
+/* =================================================================== */
+
+
+/* ANIMATED PANELS & STEPS                       */
+
+
+/* =================================================================== */
+
+.steps {
+    display: flex;
+    gap: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.step {
+    background: var(--glass);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    border: 1px solid var(--panel-border);
+    transition: all var(--transition-med);
+}
+
+.step.active {
+    background: linear-gradient(90deg, rgba(15, 178, 166, 0.12), rgba(10, 163, 214, 0.08));
+    color: var(--text);
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(15, 178, 166, 0.2);
+}
+
+.container {
+    display: grid;
+    gap: 15px;
+}
+
+.panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--panel-border);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all var(--transition-med);
+    /* Staggered load-in animation for panels */
+    opacity: 0;
+    animation: fadeInUp 0.5s var(--transition-med) forwards;
+}
+
+
+/* This creates the staggered delay effect */
+
+.panel:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.panel:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.panel:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.panel:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.panel:hover {
+    border-color: rgba(15, 178, 166, 0.5);
+    transform: translateY(-2px);
+}
+
+.panel h2 {
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    color: var(--text);
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 10px;
+}
+
+
+/* =================================================================== */
+
+
+/* ENHANCED FORMS & INTERACTION                    */
+
+
+/* =================================================================== */
+
+input,
+select,
+textarea {
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--panel-border);
+    font-size: 14px;
+    padding: 11px;
+    border-radius: 8px;
+    transition: all var(--transition-med);
+    min-height: 36px;
+    line-height: 1.3;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent-2);
+    box-shadow: 0 0 15px rgba(10, 163, 214, 0.2);
+    outline: none;
+}
+
+.params-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+/* Custom scrollbar */
+
+.params-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.params-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.params-grid::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 4px;
+    border: 2px solid var(--bg);
+}
+
+.param {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--panel-border);
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-med);
+}
+
+.param:hover,
+.param input[type="checkbox"]:checked+label {
+    background: rgba(15, 178, 166, 0.1);
+    border-color: var(--accent-2);
+    transform: translateX(5px);
+}
+
+
+/* =================================================================== */
+
+
+/* INTERACTIVE CARDS                           */
+
+
+/* =================================================================== */
+
+.algos-grid,
+.viz-grid {
+    display: flex;
+    gap: 11px;
+    flex-wrap: wrap;
+}
+
+.algo-card,
+.viz-option {
+    padding: 13px;
+    border-radius: 10px;
+    border: 1.5px solid var(--panel-border);
+    background: var(--glass);
+    cursor: pointer;
+    transition: all var(--transition-med);
+    text-align: center;
+    flex-grow: 1;
+}
+
+.algo-card:hover,
+.viz-option:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: var(--accent-2);
+    box-shadow: 0 0 20px rgba(10, 163, 214, 0.2);
+}
+
+.algo-card.selected,
+.viz-option.selected {
+    border-color: var(--accent);
+    color: #fff;
+    background: linear-gradient(95deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 25px rgba(15, 178, 166, 0.3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.viz-option {
+    color: var(--text);
+}
+
+
+/* =================================================================== */
+
+
+/* RESULTS & SUMMARY                           */
+
+
+/* =================================================================== */
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+#results-area {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), transparent);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--panel-border);
+    min-height: 100px;
+}
+
+#chart-summary {
+    margin-top: 18px;
+    padding: 18px 15px;
+    background: rgba(12, 42, 51, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    border: 1px solid var(--panel-border);
+    font-size: 16px;
+    line-height: 1.6;
+    /* Animation for when the summary appears */
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.2s forwards;
+}
+
+
+/* =================================================================== */
+
+
+/* FOOTER & RESPONSIVE                          */
+
+
+/* =================================================================== */
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    opacity: 0.95;
+}
+
+@media (max-width: 700px) {
+    .params-grid {
+        grid-template-columns: 1fr;
+        max-height: 250px;
+    }
+    .algo-card {
+        min-width: 140px;
+    }
+    .app {
+        padding: 14px 12px;
+    }
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+/* ===========================================================
+   THEME TOGGLE & REFRESH BUTTONS
+   =========================================================== */
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#theme-toggle, #refresh-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    background: var(--glass);
+    color: var(--text);
+    border: 1px solid var(--panel-border);
+    cursor: pointer;
+    transition: all var(--transition-med);
+}
+
+#theme-toggle:hover, #refresh-btn:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgba(15, 178, 166, 0.2);
+}

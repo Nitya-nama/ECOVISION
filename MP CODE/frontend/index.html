@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EcoVision</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <div class="header">
+            <div class="brand">
+                <div class="logo">🌍</div>
+                <h1>EcoVision</h1>
+            </div>
+            <!-- 🌗 Light/Dark Mode Toggle and Refresh Button -->
+            <div class="header-actions">
+            <button id="theme-toggle" class="btn">🌞 Light</button>
+            <button id="refresh-btn" class="btn">🔄 Refresh</button>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="step active">1. Country</div>
+            <div class="step">2. Parameters</div>
+            <div class="step">3. Algorithm</div>
+            <div class="step">4. Visualization</div>
+        </div>
+        <div class="container">
+            <div class="panel">
+                <label for="country-search"><strong>Country Search</strong></label>
+                <input list="country-list" id="country-search" placeholder="Search country..." />
+                <datalist id="country-list"></datalist>
+            </div>
+            <div class="panel">
+                <h2>Select Parameters</h2>
+                <div class="params-grid" id="params-container"></div>
+            </div>
+            <div class="panel">
+                <h2>Choose ML Algorithm</h2>
+                <div class="algos-grid" id="algo-container"></div>
+            </div>
+            <div class="panel">
+                <h2>Visualization Type</h2>
+                <div class="viz-grid" id="viz-container"></div>
+            </div>
+        </div>
+        <div class="actions">
+            <button id="analyze-btn" class="btn primary">Analyze</button>
+            <button id="exportPDF" class="btn">Export PDF</button>
+            <button id="exportPNG" class="btn">Export PNG</button>
+            <button id="exportCSV" class="btn">Export CSV</button>
+        </div>
+
+        <div id="results-area">
+            <canvas id="result-chart"></canvas>
+
+            <div id="metrics-display"></div>
+
+        </div>
+
+        <div class="footer">Powered by Machine Learning & Global Data Analytics</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
