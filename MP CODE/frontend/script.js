@@ -216,7 +216,7 @@
 
     // Gemini API fetcher
     async function fetchGeminiSummary(prompt) {
-        const API_KEY = "AIzaSyBf5v6eYgz2OWiAx_9m04jffByNuJZbMPk"; // Replace with your actual key
+        const API_KEY = "Replace with your actual key"; // Replace with your actual key
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
         const body = {
@@ -475,3 +475,4 @@
         }
     });
 })();
+
